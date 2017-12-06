@@ -1,0 +1,24 @@
+ 
+  <!-- Table starts here -->
+  <table id="table" class="table table-hover table-mc-light-blue">
+    <thead>
+      <tr class="align-center">
+        <th class="align-center">Priority Level</th>
+        <th class="align-center">Title</th>
+        <th class="align-center"> Description</th>
+        <th class="align-center"> Delete </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todos">
+        <td>{{todo.priority}}</td>
+        <td>{{todo.title}}</td>
+        <td>{{todo.description}}</td>
+        <td> <button type="button" class="btn btn-danger" (click)="deleteTodo(todo); $event.stopPropagation();">Delete</button></td>
+
+      </tr>
+    </tbody>
+ </table>
+
+
+<app-add-todo (addTodo)="onAddTodo($event)"> </app-add-todo>
