@@ -5,7 +5,7 @@ COPY package.json /app
 RUN npm install
 COPY . /app
 
-RUN cd /app; npm install -g @angular/cli@latest; npm install; ng build
+RUN cd /app/angular-src; npm install -g @angular/cli@latest; npm install; ng build
 
 CMD npm start
 
