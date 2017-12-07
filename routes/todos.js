@@ -4,9 +4,11 @@ const axios = require('axios');
 var config = require(__dirname + '/../config.js');
 
 function get(req, res, next) {
-  console.log('Executing GET ', `${config.api_ords}/todos`);
+  let authorId = req.params.author_id;
+  
+  console.log('Executing GET ', `${config.api_ords}/todos?q={"author_id":${authorId}}`);
 
-  axios.get(`${config.api_ords}/todos`)
+  axios.get(`${config.api_ords}/todos?q={"author_id":${authorId}}`)
     .then(todos => {
       res.status(200).json(todos.data);
     })
@@ -29,8 +31,9 @@ function post(req, res, next) {
   axios.post(`${config.api_ords}/todos/`, todo)
     .then(function (response) {
       console.log('POSTED');
+      let newid = response.data.id;
       res.status(200).json({
-        success: true, message: "Added successfully."
+        success: true, message: "Added successfully.", id: newid
       });
     })
     .catch(function (err) {

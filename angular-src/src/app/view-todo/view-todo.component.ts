@@ -21,8 +21,8 @@ export class ViewTodoComponent implements OnInit {
 
   public loadTodos() {
 	
-	//Get all lists from server and update the lists property
-	this.todoServ.getAllTodos().subscribe(
+	//Get all todos from server and update the todos property
+	this.todoServ.getAllTodos(this.userid()).subscribe(
 		response => { 
       this.todos = response;
       console.log('GETALL!', this.todos);
@@ -41,6 +41,14 @@ export class ViewTodoComponent implements OnInit {
   //onAddTodo will be invoked when the child component emits an event
   public onAddTodo(newTodo) {
     this.todos = this.todos.concat(newTodo);
+  }
+
+
+  private userid() {
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));    
+    if (currentUser) {
+      return currentUser.id;
+    }
   }
 }
 	

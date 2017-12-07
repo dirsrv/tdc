@@ -302,8 +302,8 @@ var TodoService = (function () {
         this.http = http;
         this.apiurl = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiurl;
     }
-    TodoService.prototype.getAllTodos = function () {
-        var URI = this.apiurl + "/todos";
+    TodoService.prototype.getAllTodos = function (authorId) {
+        var URI = this.apiurl + "/todos/" + authorId;
         return this.http.get(URI, this.jwt())
             .map(function (res) { return res.json(); })
             .map(function (res) { return res.items; });
@@ -475,7 +475,9 @@ var AddTodoComponent = (function () {
         console.log(this.newTodo.priority);
         this.todoServ.addTodo(this.newTodo).subscribe(function (response) {
             if (response.success == true)
-                _this.addTodo.emit(_this.newTodo);
+                _this.newTodo.id = response.id;
+            console.log('NEWTODO', response);
+            _this.addTodo.emit(_this.newTodo);
         });
     };
     return AddTodoComponent;
@@ -911,8 +913,8 @@ var ViewTodoComponent = (function () {
     };
     ViewTodoComponent.prototype.loadTodos = function () {
         var _this = this;
-        //Get all lists from server and update the lists property
-        this.todoServ.getAllTodos().subscribe(function (response) {
+        //Get all todos from server and update the todos property
+        this.todoServ.getAllTodos(this.userid()).subscribe(function (response) {
             _this.todos = response;
             console.log('GETALL!', _this.todos);
         }, function (err) {
@@ -927,6 +929,12 @@ var ViewTodoComponent = (function () {
     //onAddTodo will be invoked when the child component emits an event
     ViewTodoComponent.prototype.onAddTodo = function (newTodo) {
         this.todos = this.todos.concat(newTodo);
+    };
+    ViewTodoComponent.prototype.userid = function () {
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser) {
+            return currentUser.id;
+        }
     };
     return ViewTodoComponent;
 }());

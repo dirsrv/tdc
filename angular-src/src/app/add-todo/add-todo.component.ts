@@ -26,8 +26,9 @@ export class AddTodoComponent implements OnInit {
   	console.log(this.newTodo.priority);
   	this.todoServ.addTodo(this.newTodo).subscribe(
   		response=> {
-  			
-  			if(response.success== true)
+			  if(response.success== true)
+				  this.newTodo.id = response.id;
+				  console.log('NEWTODO',response);
   				this.addTodo.emit(this.newTodo);
   		},
 	);

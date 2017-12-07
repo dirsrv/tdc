@@ -12,8 +12,8 @@ export class TodoService {
 
   constructor(private http: Http) { }
 
-  public getAllTodos(): Observable<Todo[]> {
-    let URI = `${this.apiurl}/todos`;
+  public getAllTodos(authorId: string): Observable<Todo[]> {
+    let URI = `${this.apiurl}/todos/${authorId}`;
     return this.http.get(URI, this.jwt())
       .map(res => res.json())
       .map(res => <Todo[]>res.items);
