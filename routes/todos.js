@@ -42,9 +42,7 @@ function post(req, res, next) {
 function remove(req, res, next) {
 
   let todoId = req.params.todo_id;
-  console.log("TODOID", todoId);
   
-
   console.log('Executing DELETE ', `${config.api_ords}/todos/?q={"id":${todoId}}`);
 
   axios.delete(`${config.api_ords}/todos/?q={"id":${todoId}}`)

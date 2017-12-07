@@ -24,13 +24,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 router = express.Router();
 
 router.get('/posts', posts.get);
-//router.get('/todos', auth(), todos.get);
-router.get('/todos', todos.get);
+router.get('/todos', auth(), todos.get);
+//router.get('/todos', todos.get);
 router.get('/todos2', auth('ADMIN'), todos.get);
 router.post('/users', users.post);
 router.post('/logins', logins.post);
-router.post('/todos', todos.post);
-router.delete('/todos/:todo_id', todos.delete);
+router.post('/todos', auth(), todos.post);
+router.delete('/todos/:todo_id',auth(), todos.delete);
 
 app.use('/api', router);
 

@@ -31,7 +31,7 @@ function post(req, res, next) {
                     sub: user.email,
                     role: user.role
                 };
-
+    
                 res.status(200).json({
                     user: user,
                     token: jwt.sign(payload, config.jwtSecretKey, { expiresInMinutes: 60 })

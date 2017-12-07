@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Todo } from '../models/Todo';
-import { TodoService } from '../services/todo.service';
+import { Todo } from '../_models/Todo';
+import { TodoService } from '../_services/todo.service';
 
 @Component({
   selector: 'app-add-todo',
@@ -10,7 +10,7 @@ import { TodoService } from '../services/todo.service';
 export class AddTodoComponent implements OnInit {
   private newTodo :Todo;
   @Output() addTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
-  constructor(private listServ: TodoService) { }
+  constructor(private todoServ: TodoService) { }
  
   ngOnInit() {
   	this.newTodo = {
@@ -24,7 +24,7 @@ export class AddTodoComponent implements OnInit {
 
   public onSubmit() {
   	console.log(this.newTodo.priority);
-  	this.listServ.addTodo(this.newTodo).subscribe(
+  	this.todoServ.addTodo(this.newTodo).subscribe(
   		response=> {
   			
   			if(response.success== true)

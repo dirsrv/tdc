@@ -1,0 +1,25 @@
+﻿<div class="row">
+        <div class="col-md-offset-2 col-md-8">
+    <h1>Hi {{currentUser.name}} {{currentUser.surname}}!</h1>
+    <p>You've logged in successfully using your email: {{currentUser.email}}</p>
+   
+    <!--
+    <h3>All registered users:</h3>
+    <ul>
+        <li *ngFor="let user of users">
+            {{user.username}} ({{user.firstName}} {{user.lastName}})
+            - <a (click)="deleteUser(user.id)">Delete</a>
+        </li>
+    </ul>
+-->
+
+    <p><a [routerLink]="['/login']">Logout</a></p>
+
+</div>
+</div>
+<div class="row">
+        <div class="col-md-offset-2 col-md-8">
+                <h3>Your best todo list:</h3>
+                <app-view-todo> </app-view-todo>
+        </div>
+   </div>
