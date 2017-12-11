@@ -1,7 +1,7 @@
 // declare axios for making http requests
 const axios = require('axios');
 
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
 var config = require(__dirname + '/../config.js');
