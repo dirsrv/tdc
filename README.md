@@ -1,6 +1,8 @@
 # Angular - Node.js - Oracle Stack
 
-This is a simple todo list application that lets you create, view and delete your todos. This is an example.
+This is a sweet simple todo list application that lets you create, view and delete your todos. 
+It has an Angular frontend, secure API w/JWT running on Node.js and connects to rest-enabled Oracle DB (visit cloud.oracle.com to get one ;)
+
 
 ## Requirements
 
