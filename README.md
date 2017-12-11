@@ -8,20 +8,22 @@ This is a simple todo list application that lets you create, view and delete you
 
 ## Installation Steps
 
+After the git clone inside root directory lauch npm prerequisites install:
+
 ```
 npm install
 ```
 
-The angular front-end code is located inside the `angular-src`. 
+Your Angular frontend code is located inside the `angular-src`.
 
 Do a `npm install -g @angular/cli@latest` and `npm install` inside the `angular-src` directory so that npm can install all the angular dependencies
 
-Angular-CLI's
+Still inside `angular-src` run the Angular-CLI's build:
 
 ```
 ng build
 ```
 
-should compile the static code into the root `public` directory.
+this should compile the static code into the root `public` directory.
 
-Run `npm start` to get this started!
+Finally, inside root directory run `npm start` to get this started!
