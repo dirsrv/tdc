@@ -27,3 +27,10 @@ ng build
 this should compile the static code into the root `public` directory.
 
 Finally, inside root directory run `npm start` to get this started!
+
+## Custom configuration
+
+If you wish to change connection parameters, check:
+- `root_dir/config.js` and set your Oracle DB ORDS endpoint
+- `root_dir/angular_src/src/environments/environment.ts` if you wish to have separate node runing api and a separate for angular
+
