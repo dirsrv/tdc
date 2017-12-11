@@ -38,24 +38,39 @@ insert into tdc_users (EMAIL,ROLE,PASSWORD,NAME,SURNAME) values ('jan.palica@ora
 insert into tdc_users (EMAIL,ROLE,PASSWORD,NAME,SURNAME) values ('ostatnia@securemail.pl','BASE','$2a$10$Y2P4Gqmr8plOMX4pF2fbb.tvE.iIsRV.Z2WlglrjCx8YVU31ZVT6W','Elżbieta','Ostatnia');
 
 create table tdc_posts (
+   id number not null,
    content varchar2(512 byte) not null
 );
- 
 
-insert into tdc_posts (content) values ('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
-insert into tdc_posts (content) values ('Morbi interdum, justo a commodo gravida, magna tortor scelerisque nisl, vitae iaculis odio nisi vel risus.');
-insert into tdc_posts (content) values ('Fusce ac dui ullamcorper, dignissim purus sit amet, consequat dolor.');
-insert into tdc_posts (content) values ('Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris porttitor tincidunt magna nec pharetra. ');
-insert into tdc_posts (content) values ('Vestibulum mi purus, ornare ut sem sed, porttitor fermentum erat.');
- 
+ALTER TABLE tdc_posts
+ADD CONSTRAINT tdc_posts_fk1 FOREIGN KEY
+(
+  id
+)
+REFERENCES TDC_USERS
+(
+  id 
+)
+ENABLE;
+
+insert into tdc_posts (id, content) values (1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+insert into tdc_posts (id, content) values (2, 'Morbi interdum, justo a commodo gravida, magna tortor scelerisque nisl, vitae iaculis odio nisi vel risus.');
+insert into tdc_posts (id, content) values (3, 'Fusce ac dui ullamcorper, dignissim purus sit amet, consequat dolor.');
+insert into tdc_posts (id, content) values (4, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris porttitor tincidunt magna nec pharetra. ');
+insert into tdc_posts (id, content) values (5, 'Vestibulum mi purus, ornare ut sem sed, porttitor fermentum erat.');
+insert into tdc_posts (id, content) values (6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+insert into tdc_posts (id, content) values (7, 'Morbi interdum, justo a commodo gravida, magna tortor scelerisque nisl, vitae iaculis odio nisi vel risus.');
+insert into tdc_posts (id, content) values (8, 'Fusce ac dui ullamcorper, dignissim purus sit amet, consequat dolor.');
+insert into tdc_posts (id, content) values (9, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris porttitor tincidunt magna nec pharetra. ');
+insert into tdc_posts (id, content) values (10, 'Vestibulum mi purus, ornare ut sem sed, porttitor fermentum erat.');
+
+
 create table tdc_todos(
 author number not null,
 title varchar2(200 byte) not null,
 description varchar2(512 byte) not null,
 priority varchar2(200 byte) not null
 );
-
-
 
 DECLARE
   PRAGMA AUTONOMOUS_TRANSACTION;
