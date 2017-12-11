@@ -1,3 +1,7 @@
-{
-"command": "node server.js"
-}
+    {
+    "runtime":{
+    "majorVersion":"6"
+    },
+    "command": "node server.js",
+    "mode": "rolling"
+    }
